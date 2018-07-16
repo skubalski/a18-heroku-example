@@ -1,0 +1,15 @@
+{
+  "name": "a18-heroku-example",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.12.1",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.3",
+    "pg-promise": "^8.4.5",
+    "redis": "^2.8.0",
+    "uuid": "^3.3.2"
+  }
+}
