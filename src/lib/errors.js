@@ -1,13 +1,22 @@
 class NotFoundError extends Error {
-  code = 404;
+  constructor(...args) {
+    super(args);
+    this.code = 404;
+  }
 }
 
 class UnexpectedError extends Error {
-  code = 500;
+  constructor(...args) {
+    super(args);
+    this.code = 500;
+  }
 }
 
 class InvalidRequestError extends Error {
-  code = 400;
+  constructor(...args) {
+    super(args);
+    this.code = 400;
+  }
 }
 
 module.exports = {

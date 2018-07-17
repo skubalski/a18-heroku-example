@@ -3,7 +3,7 @@ const pgDatabase = require('../../lib/pg-database');
 const S3Helper = require('../../lib/s3-helper');
 const QrCodeHelper = require('../../lib/qr-code-helper');
 const _ = require('lodash');
-const {NotFoundError} = require('../../lib/errors');
+const {NotFoundError, UnexpectedError} = require('../../lib/errors');
 const {sfidValidator} = require('../../lib/validators');
 
 app.get('/:id', sfidValidator, async (req, res, next) => {
@@ -24,7 +24,7 @@ app.get('/:id', sfidValidator, async (req, res, next) => {
       res.send(content);
     }
   } catch (err) {
-    next(err);
+    next(new UnexpectedError(err));
   }
 });
 
@@ -44,7 +44,7 @@ app.post('/:id', sfidValidator, (req, res) => {
       res.sendStatus(201);
     });
   } catch (err) {
-    next(err);
+    next(new UnexpectedError(err));
   }
 });
 

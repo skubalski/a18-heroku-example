@@ -6,4 +6,4 @@ class QrCodeHelper {
   }
 }
 
-modules.exports = QrCodeHelper;
+module.exports = QrCodeHelper;
