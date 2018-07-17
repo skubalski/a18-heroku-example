@@ -10,6 +10,8 @@ const pathToSwaggerUi = swaggerUi.absolutePath();
 const qrRouter = require('./routes/qr');
 const csvRouter = require('./routes/csv');
 const {NotFoundError} = require('../lib/errors');
+const path = require('path');
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -17,25 +19,27 @@ const app = express();
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 app.use(compression());
 app.use(responseTime());
 
+app.all('/', (req, res) => {
+  res.sendStatus(200);
+});
+
 app.use('/swagger', express.static(pathToSwaggerUi));
+app.use('/swagger/config', express.static(path.join(__dirname, '../../swagger-config.yaml')));
 
 app.use('/asset/qr', qrRouter);
 app.use('/asset/csv', csvRouter);
 
-app.use((res, req, next) => {
+app.use((req, res, next) => {
   next(new NotFoundError());
 });
 
-app.use((res, req, next, err) => {
-  req.status(err.code || 500);
-  req.json({
-    error_message: err.message || 'Unexpected error occur'
-  });
+app.use((err, req, res, next) => {
+  res.sendStatus(err.code || 500);
 });
 
 app.listen(PORT, () => console.log(`APP is listening on port: ${PORT}`));

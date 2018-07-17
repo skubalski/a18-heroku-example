@@ -28,7 +28,7 @@ app.get('/:id', sfidValidator, async (req, res, next) => {
   }
 });
 
-app.post('/:id', sfidValidator, (req, res) => {
+app.post('/:id', sfidValidator, (req, res, next) => {
   try {
     return pgDatabase.task(async t => {
       const asset = {}; // todo: select asset
@@ -48,7 +48,7 @@ app.post('/:id', sfidValidator, (req, res) => {
   }
 });
 
-app.put('/:assetId', sfidValidator, (req, res) => {
+app.put('/:assetId', sfidValidator, (req, res, next) => {
 
 });
 
