@@ -31,8 +31,8 @@ app.all('/', (req, res) => {
 app.use('/swagger', express.static(pathToSwaggerUi));
 app.use('/swagger/config', express.static(path.join(__dirname, '../../swagger-config.yaml')));
 
-app.use('/asset/qr', qrRouter);
-app.use('/asset/csv', csvRouter);
+app.use('/api/v1/asset/qr', qrRouter);
+app.use('/api/v1/asset/csv', csvRouter);
 
 app.use((req, res, next) => {
   next(new NotFoundError());
