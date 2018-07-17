@@ -5,7 +5,7 @@ info:
   title: "Akademia 2018 - heroku communication"
   contact:
     email: "s.kubalski@polsource.com"
-host: "https://a18-heroku-example.herokuapp.com"
+host: "a18-heroku-example.herokuapp.com"
 basePath: "/api/v1"
 paths:
   /asset/qr/{assetId}:
