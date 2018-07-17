@@ -11,8 +11,7 @@ class S3Helper {
     })
   }
 
-  async upload(content) {
-    const name = uuid.v4();
+  async upload(content, name = uuid.v4()) {
     await this._s3Instance.putObject({
       Bucket: process.env.S3_BUCKET_NAME || '',
       Body: content,
