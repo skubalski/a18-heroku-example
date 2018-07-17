@@ -2,14 +2,21 @@
   "name": "a18-heroku-example",
   "version": "0.0.1",
   "dependencies": {
+    "aws-sdk": "^2.275.1",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "helmet": "^3.12.1",
+    "lodash": "^4.17.10",
     "morgan": "^1.9.0",
     "pg": "^7.4.3",
     "pg-promise": "^8.4.5",
+    "qr-image": "^3.2.0",
     "redis": "^2.8.0",
+    "response-time": "^2.3.2",
+    "swagger-ui-dist": "^3.17.4",
     "uuid": "^3.3.2"
   }
 }
