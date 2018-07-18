@@ -26,7 +26,8 @@ router.post('/', async (req, res, next) => {
 router.get('/', async (req, res, next) => {
   try {
     const whereConditions = [];
-    for (const key of Object.keys(req.query || {})) {
+    const payload = req.query || {};
+    for (const key of Object.keys(payload)) {
       whereConditions.push(`${key} = $[${key}]`);
     }
     const query = `SELECT * FROM salesforce.asset__c ${_.isEmpty(whereConditions) ? '' : `WHERE ${whereConditions.join(' AND ')}`}`;
