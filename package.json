@@ -1,6 +1,9 @@
 {
   "name": "a18-heroku-example",
   "version": "0.0.1",
+  "engines": {
+    "node": "9.10.1"
+  },
   "dependencies": {
     "aws-sdk": "^2.275.1",
     "bluebird": "^3.5.1",
