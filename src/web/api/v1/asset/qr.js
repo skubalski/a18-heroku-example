@@ -38,11 +38,11 @@ app.post('/:id', sfidValidator, async (req, res, next) => {
       if (_.isNil(asset)) {
         next(new NotFoundError());
       } else {
-        const qrCode = await t.oneOrNone(
+        const qrCode = await t.manyOrNone(
             'SELECT s3_object_name FROM a18.qr_code WHERE asset = $[assetId]',
             {assetId: req.params.id}
         );
-        if (_.isNil(qrCode)) {
+        if (_.isEmpty(qrCode)) {
           next(new InvalidRequestError());
         } else  {
           const qrCodeImage = QrCodeHelper.create(asset);
